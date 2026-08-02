@@ -1,0 +1,13 @@
+run_id=20260718T023119Z_seed_20260718
+started_utc=2026-07-18T02:36:53Z
+completed_utc=2026-07-18T02:37:12Z
+seed=20260718
+draws_per_pair=50000
+raw_row_count=750000
+runtime_seconds=19.560506
+assumptions_sha256=6f463bd9d9bafb15be5791306374d8e01ca2b83e1a6b434680b6cac59b3ee6ff
+code_sha256=6e73a784ce4c1d3ca1301bff3de04a977b1530244b1f663c9f38de1f58d5af60
+pre_run_tests=required
+post_run_tests=17/17_passed
+audit_note=unit-name checker corrected for two explicit watt-average columns; no model or numeric output change
+status=COMPLETE_EXPLORATORY
