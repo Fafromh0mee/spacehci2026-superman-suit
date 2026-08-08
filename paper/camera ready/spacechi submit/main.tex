@@ -1,6 +1,5 @@
-% SpaceCHI 2026 position paper / camera-ready manuscript scaffold.
+% SpaceCHI 2026 position paper / camera-ready manuscript.
 % The supplied Springer proceedings template is used without class modification.
-% Replace the anonymized author block and the figure placeholders before submission.
 \documentclass[runningheads]{llncs}
 
 \usepackage[T1]{fontenc}
@@ -19,18 +18,14 @@
 \title{Superman Suit: A Photovoltaic Neuromuscular Safety Net for Off-World Habitats}
 \titlerunning{Superman Suit: A Neuromuscular Safety Net}
 
-% SpaceCHI uses double-blind review. Replace this block with the final author
-% and affiliation information for the accepted-paper camera-ready version.
-\author{Anonymous Author One\inst{1} \and Anonymous Author Two\inst{1}}
-\authorrunning{Anonymous Authors}
-\institute{Affiliation withheld for review}
+\author{Taechasith Kangkhuntod\inst{1} \and Nantita Damrongpanawan\inst{2}}
+\authorrunning{T. Kangkhuntod and N. Damrongpanawan}
+\institute{University of the Thai Chamber of Commerce, Bangkok, Thailand
+\and Bangkok University, Bangkok, Thailand}
 
 \maketitle
 
-% ---------------------------------------------------------------------------
-% FIGURE 1 IS INTENTIONALLY BEFORE THE ABSTRACT. Replace the file path with
-% the author's actual suit illustration when available. The fallback keeps the
-% manuscript compilable and reserves the final layout area.
+% Figure 1 is intentionally before the abstract.
 \begin{figure}[H]
 \centering
 \IfFileExists{figures/fig1_suit_design.pdf}{%
@@ -46,7 +41,7 @@
 \end{figure}
 
 \begin{abstract}
-Future off-world habitats may treat the human body as another load on centralized systems for power, exercise, and health maintenance. This position paper argues that Space HCI should also investigate garments as distributed physiological infrastructure: body-proximate systems that harvest local resources, make scarcity legible, and preserve bounded care when centralized infrastructure is interrupted. We develop this position through the \emph{Superman Suit}, a conceptual photovoltaic garment that stores harvested light energy and allocates it to user-controlled neuromuscular electrical stimulation (NMES) when ordinary exercise is temporarily unavailable. The suit is not proposed as an exercise replacement, clinical device, or flight-qualified system. Instead, it is a theory-bearing artifact for examining environmental intermittency, energy provenance, bodily automation, and crew agency. Following design science and Research through Design, we combine literature grounding, an annotated system model, failure-first interaction scenarios, and a bounded computational energy probe. A 750,000-draw Monte Carlo probe under explicitly illustrative assumptions found robust energy support in deployed or strongly illuminated scenarios, conditional or assisted operation indoors, and predominantly assisted or unsupported operation during light interruption. We contribute the strong concept of a \emph{metabolic safety net}, seven design propositions, and a staged research agenda that can challenge or falsify the proposal. 
+Future off-world habitats may treat the human body as another load on centralized systems for power, exercise, and health maintenance. This position paper argues that Space HCI should also investigate garments as distributed physiological infrastructure: body-proximate systems that harvest local resources, make scarcity legible, and preserve bounded care when centralized infrastructure is interrupted. We develop this position through the \emph{Superman Suit}, a conceptual photovoltaic garment that stores harvested light energy and allocates it to user-controlled neuromuscular electrical stimulation (NMES) when ordinary exercise is temporarily unavailable. Its bounded design target is activation continuity: retaining the capability to complete one preauthorized, user-initiated lower-limb NMES session during a 24--72-hour outage, not reproducing exercise or claiming protection from deconditioning. The suit is not proposed as an exercise replacement, clinical device, or flight-qualified system. Instead, it is a theory-bearing artifact for examining environmental intermittency, resource provenance, uncertainty, bodily automation, and crew agency. Following design science and Research through Design, we combine literature grounding, an annotated system model, failure-first interaction scenarios, and a bounded computational energy probe. Rather than treating exact simulated probabilities as predictions, the probe identifies transitions among autonomous-candidate, conditional, assisted, and unavailable states and the assumptions that drive those transitions. We contribute the strong concept of a \emph{metabolic safety net}, seven design propositions, and a staged research agenda that can challenge or falsify the proposal.
 
 \keywords{Space HCI \and wearable technology \and neuromuscular electrical stimulation \and photovoltaic textiles \and design science \and Research through Design \and human autonomy}
 \end{abstract}
@@ -57,13 +52,15 @@ Long-duration spaceflight makes bodily maintenance an infrastructure problem. Ex
 
 This paper asks what Space HCI can contribute when a health garment is designed as infrastructure rather than as personal electronics. We propose the \emph{Superman Suit}: a conceptual garment that harvests light through photovoltaic textile surfaces, stores a bounded energy reserve, and uses that reserve to support user-controlled NMES when a primary exercise capability is temporarily unavailable. The name is a memorable metaphor for a protective safety net, not a claim of superhuman enhancement.
 
+We bind the proposal to short, recoverable interruptions rather than an indefinite failure: for example, 24--72 hours while a treadmill or resistive device is inspected or repaired, a scheduled exercise period missed during temporary rover or safe-haven isolation, or a short habitat power-allocation interruption. The target capability is to deliver one session already authorized by a clinician, with measurable electrical delivery and an immediate local stop. Whether that session produces adequate evoked force or any protective physiological effect remains an empirical question. Medical contraindication, loss of clinical authorization, long-duration exercise loss, or habitat emergency makes the suit unavailable rather than expanding its role.
+
 Our position is deliberately narrower than a product claim. The suit is not an exercise replacement, a prescription for stimulation parameters, a clinical intervention, or a flight-ready system. It is a theory-bearing artifact through which to examine how environmental resources become bodily action. The central claim is:
 
 \begin{quote}
 Space HCI should treat off-world health garments as distributed, resource-aware physiological infrastructure: systems that sense local resource availability, preserve a bounded reserve, explain how that reserve is allocated to the body, and maintain limited care during infrastructural interruption.
 \end{quote}
 
-The paper makes three contributions. First, it introduces the \emph{metabolic safety net}, a strong concept for limited physiological continuity during failure. Second, it instantiates that concept in an annotated suit architecture and interaction model. Third, it contributes a design-science research agenda, including design propositions, failure conditions, and a computational probe that disciplines material plausibility without being mistaken for human validation.
+The paper makes three contributions. First, it introduces the \emph{metabolic safety net}, a strong concept for limited physiological continuity during failure. Second, it instantiates that concept in an annotated suit architecture and interaction model that foreground resource provenance, uncertainty, consent, and refusal. Third, it contributes a design-science research agenda, including design propositions, failure conditions, and a computational probe that disciplines material plausibility without being mistaken for human validation.
 
 \section{Why This Is a Space HCI Problem}
 
@@ -71,7 +68,9 @@ The paper makes three contributions. First, it introduces the \emph{metabolic sa
 
 Human spaceflight countermeasures are usually framed as dedicated equipment, scheduled procedures, or clinical protocols. This framing is useful for accountability, but it can obscure the relationship between environmental resources, maintenance work, bodily agency, and system failure. A garment makes these relationships intimate: energy is gathered on the body, stored near the body, and ultimately converted into a bodily stimulus. The design therefore has to communicate not just status, but provenance: where the energy came from, how much is available, how uncertain that estimate is, and what bodily action it can support.
 
-The proposal builds on three established observations. First, exercise remains the benchmark countermeasure for deconditioning in spaceflight [1]. Second, NMES can evoke muscle contraction and has been investigated in spaceflight and bed-rest contexts, but its delivered current, monitoring, and resultant force require explicit measurement [3,4]. Third, photovoltaic textiles and flexible solar materials demonstrate a direction for body-conformal harvesting, while their practical performance depends strongly on geometry, illumination, packaging, and durability [6,7]. These observations support a research opportunity, not a deployment conclusion.
+The proposal builds on three established observations. First, exercise remains the benchmark countermeasure for deconditioning in spaceflight [1]. Second, NMES can evoke muscle contraction and has been investigated in spaceflight and bed-rest contexts, but its delivered current, monitoring, and resultant force require explicit measurement [3,4]. Third, photovoltaic textiles and flexible solar materials demonstrate a direction for body-conformal harvesting, while their practical performance depends strongly on geometry, illumination, packaging, durability, comfort, and integration [6,7,21]. These observations support a research opportunity, not a deployment conclusion.
+
+Existing work already demonstrates the components separately: an EMS garment has been used for weightless squats [2], photovoltaic textiles harvest energy [6,7], and smart textiles combine sensing, power, and interaction functions [21]. The proposed difference is therefore not a novel electrode or photovoltaic material. It is the HCI coupling of energy provenance and uncertainty to a user-governed bodily capability during infrastructure failure.
 
 \subsection{Why intermittency matters}
 
@@ -100,7 +99,7 @@ The design-science cycle has three linked parts. The relevance cycle frames exer
 
 \subsection{The metabolic safety net}
 
-The central concept is a \emph{metabolic safety net}: a secondary, distributed system that maintains a bounded physiological-care function when a primary countermeasure is interrupted. The word \emph{bounded} is essential. The safety net does not need to reproduce every benefit of a treadmill, cycle ergometer, or resistive exercise device. It must instead preserve a small, well-defined capability while the habitat restores or replaces the primary system.
+The central concept is a \emph{metabolic safety net}: a secondary, distributed system that maintains a bounded physiological-care function when a primary countermeasure is interrupted. The word \emph{bounded} is essential. Here the target is \emph{activation continuity}: the capacity to complete one preauthorized lower-limb NMES session during a 24--72-hour interruption while recording delivered output, contact quality, and stop events. Future evaluation must measure evoked force or torque; current delivery alone is not a physiological outcome. The safety net does not reproduce the cardiovascular, skeletal, sensorimotor, or psychosocial benefits of a treadmill, cycle ergometer, or resistive exercise device. ``Metabolic'' names continuity of body-maintenance infrastructure, not a demonstrated whole-body metabolic effect.
 
 This concept produces four design commitments. First, contingency takes priority over substitution: the system is judged by continuity during interruption, not equivalence during nominal operation. Second, resource provenance precedes actuation: the wearer sees how an environmental resource is becoming bodily action. Third, scarcity is safe: declining energy reduces or postpones capability and never justifies exceeding an approved stimulation envelope. Fourth, bodily sovereignty is explicit: sessions require preview, affirmative initiation, and an immediate local stop.
 
@@ -132,6 +131,10 @@ E_{\mathrm{light}} \rightarrow E_{\mathrm{PV}} \rightarrow E_{\mathrm{stored}} \
 
 At every transition, the system should expose losses and uncertainty. A high battery state cannot be presented as available stimulation energy if electrode impedance, converter overhead, thermal constraints, or session policy prevent delivery.
 
+Integration is justified only where coupling creates interaction value. Co-locating harvesting, reserve estimation, contact sensing, stimulation state, and the physical stop lets one interface explain how much locally harvested energy can support which authorized bodily action, and lets a single fail-safe state disable actuation. It may also reduce repeated positioning and loose interconnects. However, integration adds mass, heat, fit, laundering, repair, and certification burdens. The theory therefore requires an integrated resource-to-body account and safety controller, not that every component be permanently sewn into one fabric. A photovoltaic overshirt plus removable storage and a separately certified NMES underlayer is a valid, and possibly preferable, implementation baseline.
+
+The figures make four theory-relevant placement choices: photovoltaic zones occupy outward-facing surfaces; electrodes align with candidate large lower-limb muscle regions; power hardware is isolated and removable; and a physical stop remains locally reachable. The exact panel shapes, electrode count and sites, sensor distribution, and stop location are illustrative rather than derived or clinically approved. Their purpose is to expose dependencies for later ergonomic, electrical, and clinical testing.
+
 \subsection{Interaction states}
 
 The garment has five user-visible states:
@@ -148,7 +151,7 @@ The design forbids autonomous background stimulation. A scheduler may recommend 
 
 \subsection{Illustrative suit design}
 
-This section provides an annotated design guide for the author's later refinement. Figure~\ref{fig:suit-detail} separates the photovoltaic and power layers from the bodily sensing and actuation layers. It annotates the photovoltaic zones, removable electronics, electrode and sensor locations, charging and data paths, and the physical emergency stop. It also shows what the wearer can see before and during a session. The most important visual distinction is between the \emph{resource layer} (harvesting, storage, and uncertainty) and the \emph{bodily layer} (sensing, stimulation, and user control).
+Figure~\ref{fig:suit-detail} uses the same suit architecture and visual language as Figure~\ref{fig:suit-overview} while separating photovoltaic and power layers from bodily sensing and actuation layers. It annotates the photovoltaic zones, removable electronics, illustrative electrode and sensor regions, charging and data paths, and the physical emergency stop. It also shows what the wearer can see before and during a session. The important distinction is between the \emph{resource layer} (harvesting, storage, and uncertainty) and the \emph{bodily layer} (sensing, stimulation, and user control), not the unvalidated geometry of a particular panel.
 
 \begin{figure}[H]
 \centering
@@ -160,13 +163,19 @@ This section provides an annotated design guide for the author's later refinemen
   \small Mark PV zones, storage/controller, electrodes, sensors, emergency stop,\\
   \small and the wearer-facing resource-to-body information flow.}}
 }
-\caption{Illustrative suit-design detail guide. The resource-to-body loop, safety boundary, and independent physical stop path are made legible at a glance.}
+\caption{Illustrative suit-design detail, matched to the garment in Fig.~\ref{fig:suit-overview}. Numbered targets map the exploded layers to specific suit components; vector leaders terminate on the photovoltaic shell, controller, storage, sensor nodes, and electrodes. Logical arrows show information and energy direction rather than physical wire routing. Exact component placement is not clinically or ergonomically validated.}
 \label{fig:suit-detail}
 \end{figure}
 
+\subsection{Mission-life integration and acceptance}
+
+The default use pattern is session-specific rather than continuous wear. A crew member retrieves the garment after an eligible interruption, connects charged removable modules, checks fit and contact, reviews source, reserve, uncertainty, muscle regions, duration, and limits, and then either initiates or refuses the session. Afterwards, the system reports delivered output and stop history before the soft layer is cleaned and the electronics are inspected and stowed. Harvesting may occur while the unworn garment is positioned near a protected illuminated surface; the concept does not imply use during extravehicular activity or underneath a pressure suit.
+
+No astronaut has yet evaluated this workflow, so these are user-need hypotheses, not astronaut requirements. Body-worn-sensor research emphasizes compactness, embedding, simple operation and maintenance, and minimal disruption to ordinary behavior [22]. Participatory work with astronauts, flight surgeons, exercise specialists, and maintainers should therefore test donning time, fit across bodies, heat and moisture, skin tolerance, mobility, cable snagging, privacy, social visibility, alarm burden, cleaning, repair, and whether provenance displays aid decisions or merely add workload. Acceptance is a gate: a technically feasible garment that disrupts sleep, work, hygiene, or bodily autonomy fails as a safety net.
+
 \section{Failure-First Scenarios and Safety Boundaries}
 
-The concept is evaluated by the situations in which its assumptions fail. Table~\ref{tab:scenarios} summarizes five scenarios used to structure the design probe and the interaction requirements.
+The concept is evaluated by the situations in which its assumptions fail. Table~\ref{tab:scenarios} summarizes five resource scenarios used to structure the design probe and the interaction requirements. These are charging and energy-accounting contexts, not evidence that the garment is suitable for every named environment.
 
 \begin{table}[ht]
 \caption{Failure-first scenarios for the Superman Suit.}
@@ -212,34 +221,33 @@ The energy adequacy ratio is $\mathrm{EAR}=E_{\mathrm{harvest}}/E_{\mathrm{deman
 
 \subsection{Scenarios, protocols, and reproducibility}
 
-The probe crossed five scenarios with three candidate protocols and generated 50,000 draws per scenario--protocol pair (750,000 observations total). The scenarios were indoor habitat, window-filtered habitat, lunar deployed sunlight, Mars clear deployed sunlight, and light interruption. The protocols were a 30-minute two-channel bridge-light session, a three-by-30-minute anchored session, and a 45-minute four-channel multichannel screen. These names identify load profiles in the model; they do not prescribe a stimulation regimen.
+The probe crossed five scenarios with three candidate protocols and generated 50,000 draws per scenario--protocol pair (750,000 observations total). The scenarios were indoor habitat, window-filtered habitat, lunar deployed sunlight, Mars clear deployed sunlight, and light interruption. The protocols were a 30-minute two-channel bridge-light session, a three-by-30-minute anchored session, and a 45-minute four-channel multichannel screen. These names identify load profiles in the model; they do not prescribe a stimulation regimen. For discussion, \emph{autonomous-candidate} means that the declared energy screen was robust without external energy; \emph{conditional} means that the classification changed within plausible inputs; \emph{assisted} requires a precharged or external reserve; and \emph{unavailable} means that the modeled session should be blocked. None is a clinical-readiness label.
 
 The run used a fixed seed (20260718), standard-library Python, versioned assumptions, boundary-case tests, and a SHA-256 manifest. An initial post-run audit found a defect in a unit-name checker; the checker was corrected without changing model equations or numeric outputs, and the final verification passed 17 of 17 tests. This audit trail is part of the result because evidence-bound speculation requires visible correction rather than silent cleanup.
 
 \subsection{Results}
 
-Table~\ref{tab:probe} reports median EAR and joint screening probability. The full distribution, sensitivity analysis, boundary cases, assumptions, and code are supplied in the accompanying project directory.
+Table~\ref{tab:probe} foregrounds state transitions and sensitivity rather than precise probabilities. The full distributions, exact model-internal probabilities, boundary cases, assumptions, and code are supplied in the accompanying project directory.
 
 \begin{table}[ht]
-\caption{Selected results from the illustrative computational probe. Values are model outputs, not measured device performance.}
+\caption{State transitions from the illustrative computational probe. EAR values are model outputs, not measured performance; exact success probabilities are retained only in the supplement.}
 \label{tab:probe}
 \centering
 \scriptsize
-\begin{tabular}{p{0.21\textwidth}p{0.19\textwidth}r r r}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.19\textwidth}>{\raggedright\arraybackslash}p{0.22\textwidth}r@{\hspace{0.8em}}>{\raggedright\arraybackslash}p{0.27\textwidth}}
 \toprule
-Scenario & Protocol & Median EAR & Joint success & Interpretation \\
+Scenario & State & Median EAR & Interpretation \\
 \midrule
-Indoor habitat & Bridge-light & 1.887 & 71.9\% & Conditional \\
-Indoor habitat & Anchored & 0.626 & 19.1\% & PV-assisted only \\
-Window-filtered & Bridge-light & 26.639 & 99.96\% & Preliminary support \\
-Lunar deployed & Bridge-light & 88.643 & 99.99\% & Preliminary support \\
-Mars clear deployed & Anchored & 12.117 & 99.91\% & Preliminary support \\
-Light interruption & Anchored & 0.095 & 0.60\% & Autonomy unsupported \\
+Indoor habitat & Conditional $\rightarrow$ assisted & 0.626--1.887 & Irradiance and overhead can change the state. \\
+Window-filtered & Autonomy candidate & 8.818--26.639 & Depends on usable exposure and filtering. \\
+Lunar deployed & Autonomy candidate & 29.666--88.643 & Duration dominates; thermal and dust effects are omitted. \\
+Mars clear deployed & Autonomy candidate & 12.117--36.609 & Duration is decisive; storms are outside this case. \\
+Light interruption & Assisted $\rightarrow$ unavailable & 0.095--0.287 & No current harvest; actuation depends on prior reserve. \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Across all 15 scenario--protocol pairs, 9 met the preliminary energy-support rule, 1 was conditional and assumption-sensitive, 4 supported only a PV-assisted framing, and 1 did not support energy autonomy. Deployed or strongly illuminated scenarios were robust under the declared assumptions. Indoor operation was conditional or assisted. Interrupted-light operation was predominantly assisted or unsupported. Irradiance and charge duration were the strongest positive sensitivity drivers; electronics overhead was a recurring negative driver. All zero-light boundary cases failed, and all deliberate voltage-compliance stress cases exceeded the assumed envelope.
+Across all 15 scenario--protocol pairs, 9 entered the autonomous-candidate state, 1 was conditional and assumption-sensitive, 4 required an assisted framing, and 1 was unavailable. The transition pattern is the substantive result: deployed or strongly illuminated charging was robust under the declared assumptions, indoor operation moved between conditional and assisted, and interrupted-light operation moved between assisted and unavailable. Irradiance and charge duration were the strongest positive sensitivity drivers; electronics overhead was a recurring negative driver. All zero-light boundary cases failed, and all deliberate voltage-compliance stress cases exceeded the assumed envelope. Because the input distributions are illustrative, the exact probabilities should not be interpreted as empirical likelihoods.
 
 The result changes the design argument in a productive way. A photovoltaic garment cannot be specified as simply ``solar powered.'' It must expose a context-dependent state: autonomous support, hybrid support, or unavailable support. The safe response to poor resource conditions is graceful degradation, not a hidden increase in bodily stimulation.
 
@@ -249,13 +257,15 @@ The result changes the design argument in a productive way. A photovoltaic garme
 
 The suit turns an environmental conversion chain into an interaction object. Conventional battery interfaces hide the source of energy, while a photovoltaic garment makes energy provenance spatial and temporal: one part of the garment may be illuminated while another is shaded; a reserve may have been accumulated hours earlier; and dust or window filtering may introduce uncertainty. Showing provenance can support trust, but it can also burden the wearer with information. A future study should compare simple reserve displays with explanations that expose environmental uncertainty and predicted session duration.
 
+This is the paper's distinctive HCI claim: when uncertain resource estimates determine whether a body can be actuated, provenance is part of informed action rather than a secondary sustainability display. The interface should separate observation (source, reserve, confidence, contact), recommendation (why a session is suggested), decision (initiate, postpone, refuse), and actuation (delivered output and stop state). That separation makes responsibility and uncertainty inspectable before the system touches the body.
+
 \subsection{Bodily sovereignty and automation}
 
 Energy-aware automation is attractive because it could schedule charging and recommend a contingency session around crew workload. Bodily actuation is different from ordinary scheduling, however. A system that silently starts or escalates stimulation would convert resource optimization into bodily governance. The proposed boundary is therefore deliberately conservative: automation may predict, summarize, and recommend, but initiation, stop, and envelope changes remain under explicit human or authorized clinical control.
 
 \subsection{Mass, maintainability, and infrastructure politics}
 
-The garment adds photovoltaic area, storage, electrodes, control electronics, insulation, cleaning, replacement, and verification work. The design is not automatically preferable to a centralized exercise device. Its value depends on whether distributed redundancy justifies these costs under a mission's failure model. This is a mission-architecture question as much as a wearable-design question. The suit should be compared with alternatives such as a spare exercise interface, shared reserve power, passive movement protocols, or a repairable modular stimulator.
+The garment adds photovoltaic area, storage, electrodes, control electronics, insulation, cleaning, replacement, and verification work. The design is not automatically preferable to a centralized exercise device or a modular alternative. Its value depends on whether shared provenance, quicker setup, consistent electrode placement, and distributed redundancy justify these costs under a mission's failure model. A comparative evaluation should include a spare exercise interface, shared reserve power, passive movement protocols, a standalone certified stimulator, and a photovoltaic charger connected to that stimulator. If a modular configuration offers equal legibility, safety, setup time, and availability at lower burden, the monolithic garment should be rejected.
 
 \subsection{A boundary object for SpaceCHI}
 
@@ -263,25 +273,25 @@ The artifact enables productive disagreement across communities. Space-health re
 
 \section{Research Agenda and Falsification Conditions}
 
-The proposal is intentionally staged. Stage 1 should measure material and electrical feasibility using calibrated plane-of-array irradiance, textile or panel output, storage losses, full-system Wh per session, thermal behavior, and fault isolation. Stage 2 should characterize human factors in a laboratory with a certified stimulator: fit, contact stability, preview comprehension, discomfort, local stop performance, and user refusal. Stage 3 should use bed-rest or analog studies to test evoked force and short-term countermeasure outcomes under an approved protocol. Stage 4 should evaluate maintainability, dust, thermal cycling, radiation-relevant packaging, and habitat integration. Only after these stages should a flight or analog mission study be considered.
+The proposal is intentionally staged. Stage 0 should use interviews, scenario walkthroughs, and participatory prototyping with astronauts, flight surgeons, exercise specialists, and maintainers to validate the outage, workflow, information, consent, and acceptance assumptions. Stage 1 should measure material and electrical feasibility using calibrated plane-of-array irradiance, textile or panel output, storage losses, full-system Wh per session, thermal behavior, and fault isolation. Stage 2 should characterize human factors in a laboratory with a certified stimulator: fit, contact stability, preview and uncertainty comprehension, discomfort, local stop performance, and user refusal. Stage 3 should use bed-rest or analog studies to test evoked force and short-term countermeasure outcomes under an approved protocol. Stage 4 should evaluate maintainability, dust, thermal cycling, radiation-relevant packaging, and habitat integration. Only after these stages should a flight or mission-analog deployment be considered.
 
 The metabolic-safety-net position would be narrowed or rejected if any of the following hold: (1) the mass and maintenance burden dominate the value of distributed continuity; (2) realistic illumination and storage cannot support even a small bounded session during the target outage; (3) users cannot reliably understand or stop the stimulation; (4) the system's uncertainty makes safe automation impossible; or (5) controlled physiological studies show no meaningful benefit for the selected contingency target. These conditions prevent the artifact from becoming an unfalsifiable product narrative.
 
 \section{Limitations}
 
-The computational probe uses illustrative distributions rather than calibrated hardware measurements. It simplifies geometry, spectrum, temperature, dust, storage aging, electrode impedance, converter behavior, and protocol scheduling. Its voltage rule is a declared screening boundary, not a certification threshold. The probe does not model human physiology, muscle preservation, discomfort, clinical eligibility, or long-duration mission outcomes. The suit architecture is conceptual; the figures are placeholders until the author supplies an annotated design. Finally, the position is one proposal among many and should not displace established exercise countermeasures or clinical care.
+The computational probe uses illustrative distributions rather than calibrated hardware measurements. It simplifies geometry, spectrum, temperature, dust, storage aging, electrode impedance, converter behavior, and protocol scheduling. Its voltage rule is a declared screening boundary, not a certification threshold. The probe does not model human physiology, muscle preservation, discomfort, clinical eligibility, or long-duration mission outcomes. No astronaut or intended end user participated, so the operational workflow and acceptance criteria are hypotheses. The suit architecture and component placements are conceptual illustrations rather than an engineering layout or clinical protocol. Finally, the position is one proposal among many and should not displace established exercise countermeasures or clinical care.
 
 \section{Conclusion}
 
 The Superman Suit reframes a photovoltaic NMES garment as a question about infrastructure, not enhancement. Its contribution is the metabolic safety net: a bounded, distributed capability that preserves limited physiological care during interruption while keeping energy provenance, scarcity, uncertainty, and bodily agency visible. The design propositions and failure-first probe show why ``solar powered'' is not a sufficient systems description. Strong illumination may support an autonomous state, indoor operation may be conditional, and interrupted light may make autonomy unavailable. That variability is not a defect to hide; it is the HCI problem. SpaceCHI can help determine when a body-proximate reserve is worth its mass and complexity, how it should be governed, and which evidence would justify moving from a theory-bearing artifact toward a validated countermeasure.
 
 \begin{credits}
-\subsubsection{\ackname} The first author is especially grateful to the second author for his patient guidance throughout her first experience of developing and writing a position paper, and for \emph{taking her to watch Supergirl} that helped inspire the project's imaginative starting point.
+\subsubsection{Acknowledgments.} The authors thank the SpaceCHI reviewers for constructive feedback that sharpened the scope, interaction argument, and evidentiary boundaries of this position paper.
 
 \subsubsection{\discintname} The authors have no competing interests to declare.
 \end{credits}
 
-\begin{thebibliography}{20}
+\begin{thebibliography}{22}
 
 \bibitem{rivas2023}
 Rivas, E., Strock, N., Dillon, E.L., Frisco, D.: Risk of impaired performance due to reduced muscle mass, strength, and endurance and risk of reduced physical performance capabilities due to reduced aerobic capacity. Evidence Report HRP-47072, NASA Human Research Program (2023). \url{https://ntrs.nasa.gov/citations/20220019338}
@@ -299,7 +309,7 @@ Doerr, D.F.: Electromyostimulation, circuits and monitoring. NASA-TM-110741 (199
 Smith, J.D., Cromwell, R.L., Kundrot, C.E., Charles, J.B.: Six-degree head-down tilt bed rest: forty years of development as a physiological analog for weightlessness. NASA (2016). \url{https://ntrs.nasa.gov/citations/20160002087}
 
 \bibitem{zhang2016}
-Zhang, Z., et al.: A wearable all-solid photovoltaic textile. Advanced Materials 28(13), 2639--2643 (2016). \doi{10.1002/adma.201504137}
+Zhang, N., Chen, J., Huang, Y., Guo, W., Yang, J., Du, J., Fan, X., Tao, C.: A wearable all-solid photovoltaic textile. Advanced Materials 28(2), 263--269 (2016). \doi{10.1002/adma.201504137}
 
 \bibitem{chen2016}
 Chen, J., et al.: Micro-cable structured textile for simultaneously harvesting solar and mechanical energy. Nature Energy 1, 16138 (2016). \doi{10.1038/nenergy.2016.138}
@@ -316,8 +326,8 @@ NASA: NASA spaceflight human-system standard, volume 2: human factors, habitabil
 \bibitem{nasa_trl}
 NASA: Technology readiness levels. \url{https://www.nasa.gov/directorates/somd/space-communications-navigation-program/technology-readiness-levels/}
 
-\bibitem{mortreux2026}
-Mortreux, M., et al.: Sensorimotor countermeasures head-down bed-rest study: countermeasures for mitigation of sensorimotor decrements following head-down bed rest. NASA Human Research Program Investigators' Workshop (2026). \url{https://ntrs.nasa.gov/citations/20260002566}
+\bibitem{macaulay2026}
+Macaulay, T.R., et al.: Sensorimotor countermeasures (SMC) head down bed rest (HDBR) study: countermeasures for mitigation of sensorimotor decrements following head-down bed rest. Presentation, NASA Human Research Program Investigators' Workshop (2026). \url{https://ntrs.nasa.gov/citations/20260002566}
 
 \bibitem{iec2023}
 International Electrotechnical Commission: IEC 60601-2-10:2012+A1:2016+A2:2023: particular requirements for the basic safety and essential performance of nerve and muscle stimulators (2023). \url{https://webstore.iec.ch/en/publication/81814}
@@ -342,6 +352,12 @@ Gaver, W.: What should we expect from research through design? In: Proceedings o
 
 \bibitem{hook2012}
 Höök, K., Löwgren, J.: Strong concepts: intermediate-level knowledge in interaction design research. ACM Transactions on Computer-Human Interaction 19(3), Article 23 (2012). \doi{10.1145/2362364.2362371}
+
+\bibitem{stoppa2014}
+Stoppa, M., Chiolerio, A.: Wearable electronics and smart textiles: a critical review. Sensors 14(7), 11957--11992 (2014). \doi{10.3390/s140711957}
+
+\bibitem{bergmann2011}
+Bergmann, J.H.M., McGregor, A.H.: Body-worn sensor design: what do patients and clinicians want? Annals of Biomedical Engineering 39, 2299--2312 (2011). \doi{10.1007/s10439-011-0339-9}
 
 \end{thebibliography}
 \end{document}

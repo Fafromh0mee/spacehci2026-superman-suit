@@ -78,7 +78,7 @@
 %
 \def\switcht@albion{%
 \def\abstractname{Abstract.}
-\def\ackname{Acknowledgments.}
+% Acknowledgements removed for submission.
 \def\andname{and}
 \def\lastandname{\unskip, and}
 \def\appendixname{Appendix}
